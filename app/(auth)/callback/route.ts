@@ -24,7 +24,9 @@ export async function GET(request: Request) {
     .eq("user_id", data.user.id)
     .maybeSingle();
 
+  // First-time users go straight to the editor to set up their page;
+  // returning users land on the dashboard overview.
   return NextResponse.redirect(
-    `${origin}${existingPage ? "/dashboard/editor" : "/onboarding"}`
+    `${origin}${existingPage ? "/dashboard" : "/onboarding"}`
   );
 }

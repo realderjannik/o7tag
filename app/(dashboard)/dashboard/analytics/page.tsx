@@ -12,15 +12,16 @@ export default async function AnalyticsPage() {
     redirect("/login");
   }
 
-  const { data: page } = await supabase
-    .from("pages")
-    .select("view_count, is_premium")
-    .eq("user_id", user.id)
-    .single();
+  const [{ data: userRow }, { data: page }] = await Promise.all([
+    supabase.from("users").select("uid").eq("id", user.id).single(),
+    supabase.from("pages").select("view_count, is_premium").eq("user_id", user.id).single(),
+  ]);
 
-  if (!page) {
+  if (!userRow || !page) {
     redirect("/onboarding");
   }
 
-  return <AnalyticsView viewCount={page.view_count} isPremium={page.is_premium} />;
+  return (
+    <AnalyticsView viewCount={page.view_count} uid={userRow.uid} isPremium={page.is_premium} />
+  );
 }

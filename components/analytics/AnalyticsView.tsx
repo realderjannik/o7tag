@@ -6,23 +6,37 @@ import { Icon } from "@/components/ui/Icon";
 
 export function AnalyticsView({
   viewCount,
+  uid,
   isPremium,
 }: {
   viewCount: number;
+  uid: number;
   isPremium: boolean;
 }) {
   const { t } = useLanguage();
+  const uidLabel = `#${String(uid).padStart(6, "0")}`;
 
   return (
     <div className="flex flex-col gap-8">
       <h1 className="text-2xl font-bold text-zinc-100">{t.analytics.title}</h1>
 
-      <div className="max-w-xs rounded-xl border border-zinc-800 bg-zinc-900 p-5">
-        <div className="mb-2 flex items-center gap-2 text-zinc-500">
-          <Icon name="eye" className="h-4 w-4" />
-          <span className="text-xs">{t.analytics.totalViews}</span>
+      <div className="grid max-w-md grid-cols-2 gap-4">
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5">
+          <div className="mb-2 flex items-center gap-2 text-zinc-500">
+            <Icon name="eye" className="h-4 w-4" />
+            <span className="text-xs">{t.analytics.totalViews}</span>
+          </div>
+          <p className="font-mono text-3xl font-bold text-zinc-100">
+            {viewCount.toLocaleString()}
+          </p>
         </div>
-        <p className="text-3xl font-bold text-zinc-100">{viewCount.toLocaleString()}</p>
+        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5">
+          <div className="mb-2 flex items-center gap-2 text-zinc-500">
+            <Icon name="flag" className="h-4 w-4" />
+            <span className="text-xs">{t.overview.uidLabel}</span>
+          </div>
+          <p className="font-mono text-3xl font-bold text-zinc-100">{uidLabel}</p>
+        </div>
       </div>
 
       {!isPremium && (

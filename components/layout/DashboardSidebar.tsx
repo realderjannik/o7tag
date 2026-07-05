@@ -22,6 +22,7 @@ export function DashboardSidebar({ username }: { username: string }) {
   };
 
   const items = [
+    { href: "/dashboard", label: t.dashboard.overview, icon: "grid" as const, exact: true },
     { href: "/dashboard/editor", label: t.dashboard.editor, icon: "link" as const },
     { href: "/dashboard/analytics", label: t.dashboard.analytics, icon: "eye" as const },
     { href: "/dashboard/settings", label: t.dashboard.settings, icon: "flag" as const },
@@ -29,7 +30,7 @@ export function DashboardSidebar({ username }: { username: string }) {
 
   return (
     <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-zinc-800 bg-zinc-950 p-4">
-      <Link href="/" className="mb-8 flex items-center gap-2.5 px-2">
+      <Link href="/dashboard" className="mb-8 flex items-center gap-2.5 px-2">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-brand-500/30 bg-gradient-to-br from-brand-500/10 to-brand-600/10">
           <Image src="/brand/o7-logo.png" alt="o7tag" width={18} height={18} />
         </span>
@@ -40,7 +41,7 @@ export function DashboardSidebar({ username }: { username: string }) {
 
       <nav className="flex flex-1 flex-col gap-1">
         {items.map((item) => {
-          const active = pathname?.startsWith(item.href);
+          const active = item.exact ? pathname === item.href : pathname?.startsWith(item.href);
           return (
             <Link
               key={item.href}

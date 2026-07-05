@@ -54,11 +54,20 @@ export const dictionary = {
       errorPasswordMismatch: "Die Passwörter stimmen nicht überein.",
     },
     dashboard: {
+      overview: "Übersicht",
       editor: "Editor",
       analytics: "Analytics",
       settings: "Einstellungen",
       viewProfile: "Page ansehen",
       logout: "Abmelden",
+    },
+    overview: {
+      welcome: "Willkommen zurück",
+      editPage: "Page bearbeiten",
+      viewsLabel: "Views",
+      uidLabel: "UID",
+      linksLabel: "Links",
+      noBio: "Noch keine Bio gesetzt.",
     },
     onboarding: {
       title: "Fast geschafft",
@@ -184,11 +193,20 @@ export const dictionary = {
       errorPasswordMismatch: "Passwords don't match.",
     },
     dashboard: {
+      overview: "Overview",
       editor: "Editor",
       analytics: "Analytics",
       settings: "Settings",
       viewProfile: "View page",
       logout: "Log out",
+    },
+    overview: {
+      welcome: "Welcome back",
+      editPage: "Edit page",
+      viewsLabel: "Views",
+      uidLabel: "UID",
+      linksLabel: "Links",
+      noBio: "No bio set yet.",
     },
     onboarding: {
       title: "Almost there",

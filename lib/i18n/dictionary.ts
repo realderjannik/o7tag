@@ -25,7 +25,6 @@ export const dictionary = {
       feature5Desc: "Behalte im Blick, wie oft deine Page besucht wird.",
       feature6Title: "Premium-Upgrade",
       feature6Desc: "Mehr Links, kein Branding, eigene Domain und Analytics.",
-      footerCrafted: "Erstellt von",
     },
     footer: {
       impressum: "Impressum",
@@ -156,7 +155,6 @@ export const dictionary = {
       feature5Desc: "Keep track of how often your page gets visited.",
       feature6Title: "Premium Upgrade",
       feature6Desc: "More links, no branding, custom domain, and analytics.",
-      footerCrafted: "Crafted by",
     },
     footer: {
       impressum: "Legal Notice",

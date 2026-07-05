@@ -61,7 +61,21 @@ export const dictionary = {
       viewProfile: "Page ansehen",
       logout: "Abmelden",
     },
+    onboarding: {
+      title: "Fast geschafft",
+      subtitle: "Pass dein Profil an, bevor's losgeht — alles änderbar.",
+      usernameLabel: "Username",
+      usernameHint: "Deine öffentliche URL: o7tag.com/",
+      usernameChecking: "Prüfe Verfügbarkeit...",
+      usernameAvailable: "Verfügbar",
+      usernameTaken: "Bereits vergeben",
+      bioFromDiscord: "Von deinem Discord-Status übernommen",
+      submit: "Los geht's",
+      submitting: "Wird erstellt...",
+    },
     editor: {
+      profileSection: "Profil",
+      designSection: "Design",
       bio: "Bio",
       bioPlaceholder: "Erzähl etwas über dich...",
       links: "Links",
@@ -80,7 +94,7 @@ export const dictionary = {
       removeAudio: "Audio entfernen",
       preview: "Live-Vorschau",
       save: "Speichern",
-      saved: "Gespeichert (lokal, Demo-Modus)",
+      saved: "Gespeichert",
       freeLinkLimit: "Free-Plan: bis zu 5 Links. Premium für unbegrenzt.",
     },
     analytics: {
@@ -178,7 +192,21 @@ export const dictionary = {
       viewProfile: "View page",
       logout: "Log out",
     },
+    onboarding: {
+      title: "Almost there",
+      subtitle: "Customize your profile before you get started — all editable later.",
+      usernameLabel: "Username",
+      usernameHint: "Your public URL: o7tag.com/",
+      usernameChecking: "Checking availability...",
+      usernameAvailable: "Available",
+      usernameTaken: "Already taken",
+      bioFromDiscord: "Pulled from your Discord status",
+      submit: "Let's go",
+      submitting: "Creating...",
+    },
     editor: {
+      profileSection: "Profile",
+      designSection: "Design",
       bio: "Bio",
       bioPlaceholder: "Tell people about yourself...",
       links: "Links",
@@ -197,7 +225,7 @@ export const dictionary = {
       removeAudio: "Remove audio",
       preview: "Live preview",
       save: "Save",
-      saved: "Saved (local, demo mode)",
+      saved: "Saved",
       freeLinkLimit: "Free plan: up to 5 links. Go Premium for unlimited.",
     },
     analytics: {
@@ -235,4 +263,6 @@ export const dictionary = {
   },
 } as const;
 
-export type Dictionary = typeof dictionary.de;
+type Widen<T> = { [K in keyof T]: T[K] extends string ? string : Widen<T[K]> };
+
+export type Dictionary = Widen<typeof dictionary.de>;

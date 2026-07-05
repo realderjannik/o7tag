@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getMockPage } from "@/lib/mock-data";
+import { getPageByUsername } from "@/lib/supabase/queries";
 import { getTheme } from "@/lib/themes";
 import { ProfileBackground } from "@/components/profile/ProfileBackground";
 import { ProfileHeader } from "@/components/profile/ProfileHeader";
@@ -13,7 +14,9 @@ export default async function ProfilePage({
   params: Promise<{ username: string }>;
 }) {
   const { username } = await params;
-  const page = getMockPage(username);
+  // Real accounts first, falling back to the two hardcoded demo profiles
+  // (ghost/nyx) used by the landing page's "view example" link.
+  const page = (await getPageByUsername(username)) ?? getMockPage(username);
 
   if (!page) {
     return (

@@ -43,21 +43,3 @@ export const MOCK_PAGES: Record<string, PageData> = {
 export function getMockPage(username: string): PageData | null {
   return MOCK_PAGES[username.toLowerCase()] ?? null;
 }
-
-export const DEFAULT_EDITOR_PAGE: PageData = {
-  username: "you",
-  displayName: "you",
-  bioText: "this is your bio. tell people who you are.",
-  avatarUrl: "https://api.dicebear.com/9.x/identicon/svg?seed=you&backgroundType=gradientLinear",
-  themeId: "midnight",
-  backgroundType: "color",
-  backgroundValue: "",
-  audioUrl: null,
-  discordId: null,
-  viewCount: 0,
-  isPremium: false,
-  links: [
-    { id: "l1", label: "My Twitch", url: "https://twitch.tv", icon: "twitch", position: 0, isVisible: true },
-    { id: "l2", label: "My Discord", url: "https://discord.com", icon: "discord", position: 1, isVisible: true },
-  ],
-};

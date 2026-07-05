@@ -25,7 +25,7 @@ export async function fetchDiscordPresence(
 
 export function discordAvatarUrl(userId: string, avatarHash: string | null): string {
   if (!avatarHash) {
-    return `https://cdn.discordapp.com/embed/avatars/${Number(BigInt(userId) % 5n)}.png`;
+    return `https://cdn.discordapp.com/embed/avatars/${Number(BigInt(userId) % BigInt(5))}.png`;
   }
   const ext = avatarHash.startsWith("a_") ? "gif" : "png";
   return `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.${ext}`;

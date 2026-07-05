@@ -42,8 +42,8 @@ export function BackgroundPicker({
             className={cn(
               "flex-1 rounded-lg border px-3 py-2 text-xs font-medium transition-colors",
               type === opt.id
-                ? "border-violet-500/50 bg-violet-500/10 text-violet-300"
-                : "border-white/10 text-zinc-400 hover:border-white/20"
+                ? "border-brand-500/50 bg-brand-500/10 text-brand-400"
+                : "border-zinc-800 text-zinc-400 hover:border-zinc-700"
             )}
           >
             {opt.label}

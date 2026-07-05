@@ -17,9 +17,9 @@ export default async function ProfilePage({
 
   if (!page) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center gap-3 bg-black px-6 text-center">
+      <main className="flex min-h-screen flex-col items-center justify-center gap-3 bg-zinc-950 px-6 text-center">
         <p className="text-6xl">👻</p>
-        <h1 className="text-xl font-semibold text-white">
+        <h1 className="text-xl font-semibold text-zinc-100">
           This page doesn&apos;t exist
         </h1>
         <p className="max-w-xs text-sm text-zinc-500">
@@ -27,7 +27,7 @@ export default async function ProfilePage({
         </p>
         <Link
           href="/login"
-          className="mt-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-500"
+          className="mt-2 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_var(--color-brand-glow)] hover:-translate-y-0.5"
         >
           Claim it now
         </Link>

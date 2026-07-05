@@ -24,7 +24,7 @@ export function AvatarUploader({
     <div>
       <label className="mb-1.5 block text-sm font-medium text-zinc-300">{t.editor.avatar}</label>
       <div className="flex items-center gap-4">
-        <img src={value} alt="" className="h-16 w-16 rounded-full border border-white/10 object-cover" />
+        <img src={value} alt="" className="h-16 w-16 rounded-full border border-zinc-800 object-cover" />
         <input
           ref={inputRef}
           type="file"

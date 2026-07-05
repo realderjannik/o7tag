@@ -67,7 +67,7 @@ export function LinkEditorList({
         {sorted.map((link, idx) => (
           <div
             key={link.id}
-            className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.02] p-2.5"
+            className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900 p-2.5"
           >
             <div className="flex flex-col">
               <button

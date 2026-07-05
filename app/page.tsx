@@ -26,7 +26,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050508]">
+    <div className="min-h-screen bg-zinc-950">
       <Navbar />
 
       <main>
@@ -35,12 +35,12 @@ export default function Home() {
             className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px]"
             style={{
               background:
-                "radial-gradient(circle at 50% 0%, rgba(168,85,247,0.18), transparent 60%)",
+                "radial-gradient(circle at 50% 0%, rgba(245,158,11,0.18), transparent 60%)",
             }}
           />
           <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl">
+              <h1 className="text-4xl font-bold leading-tight text-zinc-100 sm:text-5xl">
                 {t.home.heroTitle}
               </h1>
               <p className="mt-5 max-w-md text-lg text-zinc-400">{t.home.heroSubtitle}</p>
@@ -75,19 +75,19 @@ export default function Home() {
 
         <section id="features" className="px-6 py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="mb-12 text-center text-3xl font-bold text-white">
+            <h2 className="mb-12 text-center text-3xl font-bold text-zinc-100">
               {t.home.featuresTitle}
             </h2>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-white/20"
+                  className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6 transition-colors hover:border-brand-500 hover:shadow-[0_10px_30px_var(--color-brand-glow)]"
                 >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-brand-500/30 bg-brand-500/10 text-brand-500">
                     <Icon name={f.icon} className="h-5 w-5" />
                   </div>
-                  <h3 className="mb-1.5 font-semibold text-white">{f.title}</h3>
+                  <h3 className="mb-1.5 font-semibold text-zinc-100">{f.title}</h3>
                   <p className="text-sm text-zinc-500">{f.desc}</p>
                 </div>
               ))}
@@ -97,9 +97,9 @@ export default function Home() {
 
         <section id="pricing" className="px-6 py-20">
           <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7">
-              <h3 className="font-semibold text-white">Free</h3>
-              <p className="mt-1 text-3xl font-bold text-white">
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-7">
+              <h3 className="font-semibold text-zinc-100">Free</h3>
+              <p className="mt-1 text-3xl font-bold text-zinc-100">
                 €0<span className="text-sm font-normal text-zinc-500">/mo</span>
               </p>
               <ul className="mt-5 flex flex-col gap-2 text-sm text-zinc-400">
@@ -109,9 +109,9 @@ export default function Home() {
                 <li className="text-zinc-600">— o7tag branding shown</li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-violet-500/30 bg-violet-500/[0.04] p-7">
-              <h3 className="font-semibold text-white">Premium</h3>
-              <p className="mt-1 text-3xl font-bold text-white">
+            <div className="rounded-2xl border border-brand-500/30 bg-brand-500/[0.04] p-7">
+              <h3 className="font-semibold text-zinc-100">Premium</h3>
+              <p className="mt-1 text-3xl font-bold text-zinc-100">
                 €4.99<span className="text-sm font-normal text-zinc-500">/mo</span>
               </p>
               <ul className="mt-5 flex flex-col gap-2 text-sm text-zinc-300">

@@ -23,7 +23,7 @@ export function ThemePicker({
             onClick={() => onChange(theme.id)}
             className={cn(
               "flex flex-col items-center gap-1.5 rounded-lg border p-2 transition-colors",
-              value === theme.id ? "border-white/40" : "border-white/10 hover:border-white/20"
+              value === theme.id ? "border-brand-500" : "border-zinc-800 hover:border-zinc-700"
             )}
           >
             <span

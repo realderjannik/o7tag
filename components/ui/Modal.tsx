@@ -35,7 +35,7 @@ export function Modal({
       />
       <div
         className={cn(
-          "relative w-full max-w-md rounded-2xl border border-white/10 bg-[#0e0e16] p-6 shadow-2xl",
+          "relative w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl",
           className
         )}
       >

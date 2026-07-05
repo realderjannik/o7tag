@@ -42,7 +42,7 @@ export default function EditorPage() {
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px]">
       <div className="flex flex-col gap-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-white">{t.dashboard.editor}</h1>
+          <h1 className="text-2xl font-bold text-zinc-100">{t.dashboard.editor}</h1>
           <Badge variant={page.isPremium ? "premium" : "free"}>
             {page.isPremium ? t.settings.premium : t.settings.free}
           </Badge>

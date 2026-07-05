@@ -10,10 +10,10 @@ export function Badge({
   className?: string;
 }) {
   const variantClasses = {
-    default: "bg-white/10 text-zinc-200",
+    default: "bg-zinc-800 text-zinc-200",
     premium:
-      "bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-300 border border-amber-500/30",
-    free: "bg-white/5 text-zinc-400 border border-white/10",
+      "bg-brand-500/10 text-brand-400 border border-brand-500/30",
+    free: "bg-zinc-900 text-zinc-400 border border-zinc-800",
   };
 
   return (

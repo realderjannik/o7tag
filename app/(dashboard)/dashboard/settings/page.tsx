@@ -10,9 +10,9 @@ export default function SettingsPage() {
 
   return (
     <div className="flex max-w-lg flex-col gap-8">
-      <h1 className="text-2xl font-bold text-white">{t.settings.title}</h1>
+      <h1 className="text-2xl font-bold text-zinc-100">{t.settings.title}</h1>
 
-      <section className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-5">
+      <section className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900 p-5">
         <h2 className="text-sm font-semibold text-zinc-300">{t.settings.account}</h2>
         <div>
           <label className="mb-1.5 block text-xs text-zinc-500">{t.settings.username}</label>
@@ -20,7 +20,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-5">
+      <section className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900 p-5">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-zinc-300">{t.settings.plan}</h2>
           <Badge variant="free">{t.settings.free}</Badge>

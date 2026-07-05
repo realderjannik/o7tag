@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -18,10 +19,13 @@ export function DashboardSidebar({ username }: { username: string }) {
   ];
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-white/5 bg-[#08080c] p-4">
-      <Link href="/" className="mb-8 flex items-center gap-2 px-2">
-        <span className="text-lg font-bold tracking-tight text-white">
-          o7<span className="text-violet-400">tag</span>
+    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-zinc-800 bg-zinc-950 p-4">
+      <Link href="/" className="mb-8 flex items-center gap-2.5 px-2">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-brand-500/30 bg-gradient-to-br from-brand-500/10 to-brand-600/10">
+          <Image src="/brand/o7-logo.png" alt="o7tag" width={18} height={18} />
+        </span>
+        <span className="text-lg font-bold tracking-tight text-zinc-100">
+          o7<span className="text-brand-500">tag</span>
         </span>
       </Link>
 
@@ -35,8 +39,8 @@ export function DashboardSidebar({ username }: { username: string }) {
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-violet-600/15 text-violet-300"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                  ? "bg-brand-500/15 text-brand-400"
+                  : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"
               )}
             >
               <Icon name={item.icon} className="h-4 w-4" />
@@ -46,11 +50,11 @@ export function DashboardSidebar({ username }: { username: string }) {
         })}
       </nav>
 
-      <div className="flex flex-col gap-3 border-t border-white/5 pt-4">
+      <div className="flex flex-col gap-3 border-t border-zinc-800 pt-4">
         <Link
           href={`/${username}`}
           target="_blank"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:bg-white/5 hover:text-white"
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"
         >
           <Icon name="eye" className="h-4 w-4" />
           {t.dashboard.viewProfile}

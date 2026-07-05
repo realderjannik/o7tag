@@ -9,7 +9,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] p-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900 p-0.5 text-xs font-medium",
         className
       )}
     >
@@ -19,7 +19,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           onClick={() => setLocale(l)}
           className={cn(
             "rounded-full px-2.5 py-1 uppercase transition-colors",
-            locale === l ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"
+            locale === l ? "bg-zinc-800 text-brand-400" : "text-zinc-500 hover:text-zinc-300"
           )}
         >
           {l}

@@ -14,7 +14,7 @@ export function LegalPage({
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-[#050508]">
+    <div className="min-h-screen bg-zinc-950">
       <Navbar />
       <main className="mx-auto max-w-2xl px-6 py-16">
         <h1 className="mb-6 text-3xl font-bold text-white">{title}</h1>

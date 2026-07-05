@@ -1,8 +1,20 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
-// Stub OAuth callback route — will exchange the Supabase auth code for a
-// session once the Supabase project and Discord provider are configured.
 export async function GET(request: Request) {
-  const { origin } = new URL(request.url);
-  return NextResponse.redirect(`${origin}/dashboard/editor`);
+  const { origin, searchParams } = new URL(request.url);
+  const code = searchParams.get("code");
+
+  if (code) {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (!error) {
+      return NextResponse.redirect(`${origin}/dashboard/editor`);
+    }
+    return NextResponse.redirect(
+      `${origin}/login?error=${encodeURIComponent(error.message)}`
+    );
+  }
+
+  return NextResponse.redirect(`${origin}/login?error=missing_code`);
 }

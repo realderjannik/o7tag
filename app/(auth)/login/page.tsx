@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Icon } from "@/components/ui/Icon";
@@ -20,13 +21,38 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [discordLoading, setDiscordLoading] = useState(false);
 
   const isRegister = mode === "register";
 
-  const handleDiscordAuth = () => {
-    // Supabase project isn't provisioned yet — wire this up to
-    // supabase.auth.signInWithOAuth({ provider: "discord" }) once env vars exist.
-    alert(t.login.notice);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const oauthError = params.get("error_description") ?? params.get("error");
+    if (oauthError) setError(oauthError);
+  }, []);
+
+  const handleDiscordAuth = async () => {
+    setError(null);
+    setDiscordLoading(true);
+
+    // If the redirect to Discord hasn't happened after a few seconds
+    // (blocked navigation, network hiccup), stop showing a stuck spinner.
+    const stuckTimeout = setTimeout(() => setDiscordLoading(false), 6000);
+
+    const supabase = createClient();
+    const { error: oauthError } = await supabase.auth.signInWithOAuth({
+      provider: "discord",
+      options: {
+        redirectTo: `${window.location.origin}/callback`,
+      },
+    });
+
+    if (oauthError) {
+      clearTimeout(stuckTimeout);
+      setError(oauthError.message);
+      setDiscordLoading(false);
+    }
+    // On success the browser navigates to Discord automatically.
   };
 
   const handleEmailAuth = (e: React.FormEvent) => {
@@ -46,8 +72,8 @@ export default function LoginPage() {
       return;
     }
 
-    // Supabase project isn't provisioned yet — wire this up to
-    // supabase.auth.signInWithPassword / signUp once env vars exist.
+    // Email/password auth isn't wired up yet — wire this up to
+    // supabase.auth.signInWithPassword / signUp next.
     alert(t.login.noticeEmail);
   };
 
@@ -83,9 +109,18 @@ export default function LoginPage() {
           </p>
         </div>
 
-        <Button onClick={handleDiscordAuth} size="lg" className="mt-6 w-full">
+        <Button
+          onClick={handleDiscordAuth}
+          size="lg"
+          className="mt-6 w-full"
+          disabled={discordLoading}
+        >
           <Icon name="discord" className="h-4 w-4" />
-          {isRegister ? t.login.discordButtonRegister : t.login.discordButton}
+          {discordLoading
+            ? "..."
+            : isRegister
+              ? t.login.discordButtonRegister
+              : t.login.discordButton}
         </Button>
 
         <div className="my-5 flex items-center gap-3">
@@ -148,7 +183,7 @@ export default function LoginPage() {
         </p>
       </div>
 
-      <p className="mt-4 max-w-sm text-center text-xs text-zinc-600">{t.login.notice}</p>
+      <p className="mt-4 max-w-sm text-center text-xs text-zinc-600">{t.login.noticeEmail}</p>
     </div>
   );
 }

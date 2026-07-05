@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { createClient } from "@/lib/supabase/client";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils/cn";
 import { Icon } from "@/components/ui/Icon";
@@ -11,6 +12,14 @@ import { Icon } from "@/components/ui/Icon";
 export function DashboardSidebar({ username }: { username: string }) {
   const { t } = useLanguage();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    router.push("/login");
+    router.refresh();
+  };
 
   const items = [
     { href: "/dashboard/editor", label: t.dashboard.editor, icon: "link" as const },
@@ -59,6 +68,13 @@ export function DashboardSidebar({ username }: { username: string }) {
           <Icon name="eye" className="h-4 w-4" />
           {t.dashboard.viewProfile}
         </Link>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-zinc-400 hover:bg-zinc-900 hover:text-red-400"
+        >
+          <Icon name="logout" className="h-4 w-4" />
+          {t.dashboard.logout}
+        </button>
         <LanguageSwitcher />
       </div>
     </aside>

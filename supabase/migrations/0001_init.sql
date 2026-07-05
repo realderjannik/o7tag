@@ -1,5 +1,8 @@
 -- o7tag initial schema: users, pages, links, themes, reports
--- Run this once in the Supabase SQL Editor (Dashboard -> SQL Editor -> New query).
+-- Run this once in the Supabase SQL Editor (Dashboard -> SQL Editor -> New query),
+-- then also run 0002_grants.sql — RLS policies alone don't grant PostgREST
+-- access; the anon/authenticated roles also need baseline table privileges,
+-- which the Table Editor sets up automatically but raw SQL does not.
 
 -- ---------------------------------------------------------------------------
 -- users: private account record, 1:1 with auth.users. No public/anon access.
